@@ -1,4 +1,23 @@
 FdPj::Application.routes.draw do
+
+  resources :fds
+
+  get "fds/new"
+
+  get "fds/create"
+
+  get "fds/index"
+
+  get "fds/update"
+
+  get "fds/destroy"
+
+  get "fds/show"
+
+
+    root to: 'fds#index'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

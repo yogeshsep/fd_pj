@@ -1,0 +1,26 @@
+
+<h2>Fixed Deposit </h2>
+
+<div> 
+  <%= link_to "Open FD Account", fds_new_path, class: "btn btn-primary" %> </div>
+</br>
+
+<table cellpadding = "5" cellspacing ="5">
+  <tr>
+    <th>Name</th>
+    <th>City</th>    
+    <th>Opened On</th>
+    <th>Current Balance</th> 
+    <th>Maturity Date</th>       
+  </tr>
+  <% @fd.each do |f| %>
+    <tr>      
+      <td><%= link_to "#{f.cusna}", fd_path(f) %></td>
+      <td><%= f.city%></td>
+      <td><%= f.openedon%></td>
+      <td><%= f.depamt %></td>
+      <td><%=  %></td>      
+      <% end %></td>         
+    </tr>  
+</table>
+<br/>

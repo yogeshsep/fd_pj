@@ -5,7 +5,6 @@ gem 'jquery-rails', '2.0.2'
 gem 'bootstrap-sass', '2.1'
 gem 'jquery-rails', '2.0.2'
 
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
