@@ -1,19 +1,22 @@
 class Fd < ActiveRecord::Base
   attr_accessible :addr, :city, :cusna, :depamt, :dob, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :int
   
-after_save :calculate_int
-private
-  def calculate_int(int, depamt, roi)
-    int = ((depamt * roi)/12).round
+before_save :calculate_int
+  def calculate_int
+    self.roi = self.roi/100
+    self.int = ((self.depamt * self.roi)/12)
   end
 
-before_save :set_openedon
-    
-    def set_openedon
-      self.openedon = Date.today
-    end  
-  
+before_save :set_openedon    
+  def set_openedon
+    self.openedon = Date.today   
+  end  
 
+  before_save :set_roi
+  def set_roi
+    self.roi = self.roi * 100
+  end
+  
   validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
 
   validates_numericality_of :pin, presence: true, length: { maximum: 6 }
@@ -29,6 +32,8 @@ before_save :set_openedon
   validates :city, presence: true
 
   validates :sex, presence: true
+
+  validates :openedon, presence: true
 
   validates :depamt, numericality: { greater_than_or_equal_to: 100, presence: true }
 

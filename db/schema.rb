@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140506103013) do
+ActiveRecord::Schema.define(:version => 20140508105541) do
 
   create_table "fds", :force => true do |t|
     t.string   "cusna"
@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(:version => 20140506103013) do
     t.integer  "pin"
     t.text     "pan"
     t.date     "openedon"
-    t.integer  "depamt",     :limit => 255
+    t.float    "depamt",     :limit => 255
     t.float    "roi"
     t.integer  "noy"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.date     "md"
-    t.integer  "int",        :limit => 255
+    t.float    "int",        :limit => 255
   end
 
 end
