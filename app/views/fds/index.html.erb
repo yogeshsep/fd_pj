@@ -6,17 +6,21 @@
 </br>
 
 <table cellpadding = "5" cellspacing ="5">
-  <tr>
-    <th>Name</th>        
+  <tr>            
     <th>Opened On</th>
-    <th>Current Balance</th> 
+    <th>Deposit Amount</th> 
+    <th>Rate.of.interest</th>     
+    <th>No.of.months</th>
+    <th>Monthly Interest</th>
     <th>Maturity Date</th>       
   </tr>
   <% @fd.each do |f| %>
-    <tr>      
-      <td><%= link_to "#{f.cusna}", fd_path(f) %></td>     
+    <tr>                
       <td><%= f.openedon.strftime("%d/%m/%Y")%></td>
       <td><%= f.depamt %></td>
+      <td><%= f.roi %></td>
+      <td><%= f.noy %></td>
+      <td><%= f.int %></td>
       <td><%= f.md.strftime("%d/%m/%Y") %></td>      
       <% end %></td>         
     </tr>  

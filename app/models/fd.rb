@@ -4,7 +4,7 @@ class Fd < ActiveRecord::Base
 before_save :calculate_int
   def calculate_int
     self.roi = self.roi/100
-    self.int = ((self.depamt * self.roi)/12)
+    self.int = ((self.depamt * self.roi)/12).round
   end
 
 before_save :set_openedon    
@@ -17,26 +17,36 @@ before_save :set_roi
     self.roi = self.roi * 100
   end
 
+
+before_save :set_noy
+  def set_noy
+    if self.noy == 6
+      self.noy = self.noy
+    else
+      self.noy = self.noy * 12
+    end
+  end
+
 before_save :calculate_md
   def calculate_md
     self.openedon = Date.today
      case self.noy
-      when 1
+      when 12
         self.md = self.openedon + 1.year
-      when 2
+      when 24
         self.md = self.openedon + 2.years
-      when 3
+      when 36
         self.md = self.openedon + 3.years
-      when 4
+      when 48
         self.md = self.openedon + 4.years
-      when 5
+      when 60
         self.md = self.openedon + 5.years
       else
         self.md = self.openedon + 6.months
      end
   end
   
-  validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
+  #validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
 
   #validates_numericality_of :pin, presence: true, length: { maximum: 6 }    #validates :pan, :uniqueness => true, presence:true, format: { with: %r{^[A-Z]{5}\d{4}[A-Z]{1}} }, length: {maximum: 10}
 

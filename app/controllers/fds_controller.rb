@@ -7,7 +7,7 @@ class FdsController < ApplicationController
     @fd = Fd.new(params[:fd])
     if @fd.save
       flash[:success] = "FD Account Opened Successfully!"
-      redirect_to fd_path(@fd)
+      redirect_to fds_path
     else
       flash[:error] = "Couldn't Open FD"  
       render  'new'
