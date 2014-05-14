@@ -7,19 +7,17 @@
 
 <table cellpadding = "5" cellspacing ="5">
   <tr>
-    <th>Name</th>
-    <th>City</th>    
+    <th>Name</th>        
     <th>Opened On</th>
     <th>Current Balance</th> 
     <th>Maturity Date</th>       
   </tr>
   <% @fd.each do |f| %>
     <tr>      
-      <td><%= link_to "#{f.cusna}", fd_path(f) %></td>
-      <td><%= f.city%></td>
-      <td><%= f.openedon%></td>
+      <td><%= link_to "#{f.cusna}", fd_path(f) %></td>     
+      <td><%= f.openedon.strftime("%d/%m/%Y")%></td>
       <td><%= f.depamt %></td>
-      <td><%= f.md %></td>      
+      <td><%= f.md.strftime("%d/%m/%Y") %></td>      
       <% end %></td>         
     </tr>  
 </table>

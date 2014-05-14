@@ -3,8 +3,6 @@
 <br />
 
 <h5><strong>Customer Name</strong> : <%= @fd.cusna %></h5>
-<h5><strong>DOB</strong> : <%= @fd.dob %></h5>
-<h5><strong>City</strong> : <%= @fd.city %></h5>
 <hr>
    
 <div class="row">
@@ -14,7 +12,7 @@
    <div class="span3">
    <strong>Opened On</strong>
    </div>
-   <div class="span3"> : <%= @fd.openedon %></div>
+   <div class="span3"> : <%= @fd.openedon.strftime("%d/%m/%Y") %></div>
    </div>
    
    <div class="row">
@@ -49,7 +47,7 @@
    <div class="span3">
    <strong>Maturity Date</strong>
    </div>
-   <div class="span3"> : <%= @fd.md %></div>
+   <div class="span3"> : <%= @fd.md.strftime("%d/%m/%Y") %></div>
    </div>
    </div>
    </div>

@@ -9,31 +9,40 @@ before_save :calculate_int
 
 before_save :set_openedon    
   def set_openedon
-    self.openedon = Date.today   
+    self.openedon = Date.today.strftime("%d/%m/%Y")
   end  
 
-  before_save :set_roi
+before_save :set_roi
   def set_roi
     self.roi = self.roi * 100
+  end
+
+before_save :calculate_md
+  def calculate_md
+    self.openedon = Date.today
+     case self.noy
+      when 1
+        self.md = self.openedon + 1.year
+      when 2
+        self.md = self.openedon + 2.years
+      when 3
+        self.md = self.openedon + 3.years
+      when 4
+        self.md = self.openedon + 4.years
+      when 5
+        self.md = self.openedon + 5.years
+      else
+        self.md = self.openedon + 6.months
+     end
   end
   
   validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
 
-  validates_numericality_of :pin, presence: true, length: { maximum: 6 }
+  #validates_numericality_of :pin, presence: true, length: { maximum: 6 }    #validates :pan, :uniqueness => true, presence:true, format: { with: %r{^[A-Z]{5}\d{4}[A-Z]{1}} }, length: {maximum: 10}
 
-  validates :pan, :uniqueness => true, presence:true, format: { with: %r{^[A-Z]{5}\d{4}[A-Z]{1}} }, length: {maximum: 10}
-
-  validates_inclusion_of :dob,
-      :in => Date.civil(1900, 1, 1)..Date.today,
-      :message => "Must be between 1900 and now"
-
-  validates :addr, presence: true
-
-  validates :city, presence: true
-
-  validates :sex, presence: true
-
-  validates :openedon, presence: true
+  #validates_inclusion_of :dob,
+      #:in => Date.civil(1900, 1, 1)..Date.today,
+      #:message => "Must be between 1900 and now"   #validates :addr, presence: true   #validates :city, presence: true  #validates :sex, presence: true  #validates :openedon, presence: true
 
   validates :depamt, numericality: { greater_than_or_equal_to: 100, presence: true }
 
