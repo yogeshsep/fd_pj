@@ -45,14 +45,38 @@ before_save :calculate_md
         self.md = self.openedon + 6.months
      end
   end
+
+before_save :calculate_age
+  def calculate_age
+    self.age = Time.now.year - self.dob.year
+     if self.age >= 58 && self.age < 75
+       self.roi += 0.5
+     elsif self.age >= 75
+       self.roi += 1.0
+     else
+       self.roi == self.roi
+     end
+   end
   
-  #validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
+  validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
 
-  #validates_numericality_of :pin, presence: true, length: { maximum: 6 }    #validates :pan, :uniqueness => true, presence:true, format: { with: %r{^[A-Z]{5}\d{4}[A-Z]{1}} }, length: {maximum: 10}
+  #validates_numericality_of :pin, presence: true, length: { maximum: 6 }  
 
-  #validates_inclusion_of :dob,
-      #:in => Date.civil(1900, 1, 1)..Date.today,
-      #:message => "Must be between 1900 and now"   #validates :addr, presence: true   #validates :city, presence: true  #validates :sex, presence: true  #validates :openedon, presence: true
+  #validates :openedon, presence: true  
+
+  #validates :addr, presence: true
+
+  #validates :pan, :uniqueness => true, presence:true, format: { with: %r{^[A-Z]{5}\d{4}[A-Z]{1}} }, length: {maximum: 10}
+
+  validates_inclusion_of :dob,
+      :in => Date.civil(1900, 1, 1)..Date.today,
+      :message => "Must be between 1900 and now"   
+
+  #validates :age, presence: true    
+
+  validates :city, presence: true  
+
+  validates :sex, presence: true    
 
   validates :depamt, numericality: { greater_than_or_equal_to: 100, presence: true }
 

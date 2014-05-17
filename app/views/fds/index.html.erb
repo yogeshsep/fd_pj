@@ -8,16 +8,20 @@
 <table cellpadding = "5" cellspacing ="5">
   <tr>            
     <th>Opened On</th>
+    <th>Customer Name</th>    
     <th>Deposit Amount</th> 
-    <th>Rate.of.interest</th>     
-    <th>No.of.months</th>
+    <th>Customer Age</th>
+    <th>Rate Of Interest</th>     
+    <th>No Of Months</th>
     <th>Monthly Interest</th>
     <th>Maturity Date</th>       
   </tr>
   <% @fd.each do |f| %>
     <tr>                
       <td><%= f.openedon.strftime("%d/%m/%Y")%></td>
+      <td><%= f.cusna %></td>      
       <td><%= f.depamt %></td>
+      <td><%= f.age %></td>
       <td><%= f.roi %></td>
       <td><%= f.noy %></td>
       <td><%= f.int %></td>
