@@ -9,9 +9,10 @@ class CreateFds < ActiveRecord::Migration
       t.integer :pin
       t.text :pan
       t.date :openedon
-      t.string :depamt
+      t.float :depamt
       t.float :roi
-      t.date :noy
+      t.integer :noy
+      
 
       t.timestamps
     end
