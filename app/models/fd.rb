@@ -49,10 +49,30 @@ before_save :calculate_md
 before_save :calculate_age
   def calculate_age
     self.age = Time.now.year - self.dob.year
-     if self.age >= 58 && self.age < 75
+     if self.age >= 58 && self.age < 75 && self.noy == 6
+       self.roi == self.roi
+     elsif self.age >= 58 && self.age < 75 && self.noy == 12
        self.roi += 0.5
-     elsif self.age >= 75
+     elsif self.age >= 58 && self.age < 75 && self.noy == 24
+       self.roi += 0.5
+     elsif self.age >= 58 && self.age < 75 && self.noy == 36
+       self.roi += 0.5
+     elsif self.age >= 58 && self.age < 75 && self.noy == 48
+       self.roi += 0.5
+     elsif self.age >= 58 && self.age < 75 && self.noy == 60
+       self.roi += 0.25
+     elsif self.age >= 75 && self.noy == 6
+       self.roi += 0.5
+     elsif self.age >= 75 && self.noy == 12
        self.roi += 1.0
+     elsif self.age >= 75 && self.noy == 24
+       self.roi += 1.0
+     elsif self.age >= 75 && self.noy == 36
+       self.roi += 1.0
+     elsif self.age >= 75 && self.noy == 48
+       self.roi += 1.0
+     elsif self.age >= 75 && self.noy == 60
+       self.roi += 0.25
      else
        self.roi == self.roi
      end
