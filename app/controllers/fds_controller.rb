@@ -19,7 +19,7 @@ class FdsController < ApplicationController
   end
 
   def index
-    @fd = Fd.all
+    @fd = Fd.order('created_at DESC')
   end
 
   def update
