@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20140517110048) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.date     "md"
-    t.float    "int",        :limit => 255
+    t.integer    "int",        :limit => 255
     t.integer  "age"
   end
 
