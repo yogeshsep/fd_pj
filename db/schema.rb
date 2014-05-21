@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140517110048) do
+ActiveRecord::Schema.define(:version => 20140521122503) do
 
   create_table "fds", :force => true do |t|
     t.string   "cusna"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20140517110048) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.date     "md"
-    t.float    "int",        :limit => 255
+    t.float    "interest",   :limit => 255
     t.integer  "age"
   end
 

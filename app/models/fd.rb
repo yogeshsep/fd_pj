@@ -1,10 +1,10 @@
 class Fd < ActiveRecord::Base
-  attr_accessible :addr, :city, :cusna, :depamt, :dob, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :int
+  attr_accessible :addr, :city, :cusna, :depamt, :dob, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :interest
   
-before_save :calculate_int
-  def calculate_int
+before_save :calculate_interest
+  def calculate_interest
     self.roi = self.roi/100
-    self.int = ((self.depamt * self.roi)/12).round
+    self.interest = ((self.depamt * self.roi)/12).round
   end
 
 before_save :set_openedon    
