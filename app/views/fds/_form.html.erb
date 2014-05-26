@@ -29,10 +29,10 @@
     <%= f.text_field :openedon, :disabled => true, :value => Date.today.strftime("%d/%m/%Y") %>
 
     <%= f.label :No_of_years %>
-    <%= f.select :noy, options_for_select(%w[6months 1year 2years 3years 4years 5years]), { :include_blank => true}  %>
+    <%= f.select :noy, options_for_select(%w[1year 2years 3years 4years 5years]), { :include_blank => true}  %>
 
     <%= f.label :Rate_of_interest %>
-    <%= f.select :roi, options_for_select(%w[9.0% 9.5% 10.0% 10.5% 11.0% 11.5%]), { :include_blank => true}  %>   
+    <%= f.select :roi, options_for_select(%w[9.5% 10.0% 10.5% 11.0% 11.5%]), { :include_blank => true}  %>   
   </div>
     <%= f.submit "Open FD", class: "btn btn-primary" %>     
     <% end %>

@@ -10,12 +10,8 @@ before_save :set_openedon
 
 
 before_save :set_noy
-  def set_noy
-    if self.noy == 6
-      self.noy = self.noy
-    else
-      self.noy = self.noy * 12
-    end
+  def set_noy    
+    self.noy = self.noy * 12    
   end
 
 before_save :calculate_md
@@ -30,19 +26,15 @@ before_save :calculate_md
         self.md = self.openedon + 3.years
       when 48
         self.md = self.openedon + 4.years
-      when 60
-        self.md = self.openedon + 5.years
       else
-        self.md = self.openedon + 6.months
+        self.md = self.openedon + 5.years      
      end
   end
 
 before_save :calculate_age
   def calculate_age
     self.age = Time.now.year - self.dob.year
-     if self.age >= 58 && self.age < 75 && self.noy == 6
-       self.roi == self.roi
-     elsif self.age >= 58 && self.age < 75 && self.noy == 12
+     if self.age >= 58 && self.age < 75 && self.noy == 12
        self.roi += 0.5
      elsif self.age >= 58 && self.age < 75 && self.noy == 24
        self.roi += 0.5
@@ -51,9 +43,7 @@ before_save :calculate_age
      elsif self.age >= 58 && self.age < 75 && self.noy == 48
        self.roi += 0.5
      elsif self.age >= 58 && self.age < 75 && self.noy == 60
-       self.roi += 0.25
-     elsif self.age >= 75 && self.noy == 6
-       self.roi += 0.5
+       self.roi += 0.25     
      elsif self.age >= 75 && self.noy == 12
        self.roi += 1.0
      elsif self.age >= 75 && self.noy == 24
