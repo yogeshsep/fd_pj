@@ -1,21 +1,12 @@
 class Fd < ActiveRecord::Base
   attr_accessible :addr, :city, :cusna, :depamt, :dob, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :interest
   
-before_save :calculate_interest
-  def calculate_interest
-    self.roi = self.roi/100
-    self.interest = ((self.depamt * self.roi)/12).round
-  end
+
 
 before_save :set_openedon    
   def set_openedon
     self.openedon = Date.today.strftime("%d/%m/%Y")
   end  
-
-before_save :set_roi
-  def set_roi
-    self.roi = self.roi * 100
-  end
 
 
 before_save :set_noy
@@ -70,13 +61,24 @@ before_save :calculate_age
      elsif self.age >= 75 && self.noy == 36
        self.roi += 1.0
      elsif self.age >= 75 && self.noy == 48
-       self.roi += 1.0
+       self.roi += 0.75
      elsif self.age >= 75 && self.noy == 60
        self.roi += 0.25
      else
        self.roi == self.roi
      end
    end
+
+before_save :calculate_interest
+  def calculate_interest
+    self.roi = self.roi/100
+    self.interest = ((self.depamt.round * self.roi)/12).round
+  end
+
+before_save :set_roi
+  def set_roi
+    self.roi = self.roi * 100
+  end
   
   validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
 
