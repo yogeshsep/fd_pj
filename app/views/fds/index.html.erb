@@ -19,7 +19,7 @@
   <% @fd.each do |f| %>
     <tr>                
       <td><%= f.openedon.strftime("%d/%m/%Y")%></td>
-      <td><%= f.cusna %></td>      
+      <td><%= link_to f.cusna, fd_path(f) %></td>  
       <td><%= f.depamt %></td>
       <td><%= f.age %></td>
       <td><%= f.roi %>%</td>

@@ -1,13 +1,10 @@
 class Fd < ActiveRecord::Base
   attr_accessible :addr, :city, :cusna, :depamt, :dob, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :interest
   
-
-
 before_save :set_openedon    
   def set_openedon
     self.openedon = Date.today.strftime("%d/%m/%Y")
   end  
-
 
 before_save :set_noy
   def set_noy    
@@ -33,7 +30,7 @@ before_save :calculate_md
 
 before_save :calculate_age
   def calculate_age
-    self.age = Time.now.year - self.dob.year
+    self.age = ((DateTime.now - self.dob)/365)
      if self.age >= 58 && self.age < 75 && self.noy == 12
        self.roi += 0.5
      elsif self.age >= 58 && self.age < 75 && self.noy == 24
@@ -90,6 +87,5 @@ before_save :set_roi
 
   validates :sex, presence: true    
 
-  validates :depamt, numericality: { greater_than_or_equal_to: 100, presence: true }
-
+  validates :depamt, presence: true
 end

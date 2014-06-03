@@ -1,8 +1,27 @@
+<style>
+body{
+background: url(/assets/fd03.jpg) no-repeat;
+background-position: center;
+}
+</style>
+
+
 <br />
 <h1><%= link_to "Fixed Deposit", fds_path %></h1>
 <br />
 
 <h5><strong>Customer Name</strong> : <%= @fd.cusna %></h5>
+<h5><strong>Age</strong> : <%= @fd.age %></h5>
+
+<div class = "span6 offset6">
+      <%= link_to(edit_fd_path(@fd), class: "btn btn-primary") do %>
+   <i class="icon-pencil icon-white"> </i> Edit
+   <% end %>
+   <%= link_to(fd_path(@fd), class: "btn btn-danger", method: :delete, confirm: "Are You Sure?") do %>
+   <i class="icon-trash icon-white"> </i> Delete
+   <% end %>       
+    </div>
+
 <hr>
    
 <div class="row">

@@ -1,3 +1,10 @@
+<style>
+body{
+background: url(/assets/fd02.jpg) no-repeat;
+background-position: center;
+}
+</style>
+
 
 <%= form_for @fd, :html => {:multipart => true} do |f| %>  
  
@@ -19,8 +26,7 @@
     <%= f.select :sex, options_for_select(%w[Male Female]), { :include_blank => true} %>
 
     <%= f.label :city %>
-    <%= f.text_field :city, :placeholder =>'city' %>
-   
+    <%= f.text_field :city, :placeholder =>'city' %>   
 
     <%= f.label :deposit_amount %>
     <%= f.text_field :depamt, :placeholder =>'0.00' %>
