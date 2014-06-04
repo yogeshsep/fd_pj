@@ -1,14 +1,16 @@
 <style>
 body{
+padding-top: 60px;
 background: url(/assets/moneybag.jpg) no-repeat;
 background-position: center;
+background-size: 100%;
 }
 </style>
 
 <br />
 <h1><%= link_to "Fixed Deposit", fds_path %></h1>
 <br />
-
+<div class="jumbotron">
 <h5><strong>Customer Name</strong> : <%= @fd.cusna %></h5>
 <h5><strong>Age</strong> : <%= @fd.age %></h5>
 
@@ -70,4 +72,5 @@ background-position: center;
    </div>
    </div>
 </hr>
+</div>
 </div>

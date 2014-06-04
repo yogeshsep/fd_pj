@@ -1,7 +1,9 @@
 <style>
 body{
+padding-top: 60px;
 background: url(/assets/cash.jpg) no-repeat;
 background-position: center right;
+background-size: 100%;
 }
 </style>
 
@@ -10,6 +12,8 @@ background-position: center right;
 <div> 
   <%= link_to "Open FD Account", fds_new_path, class: "btn btn-primary" %> </div>
 </br>
+
+<h6 class= "alert alert-info"><%= page_entries_info @fd %></h6>
 
 <table cellpadding = "5" cellspacing ="5" >
   <tr>            
@@ -36,3 +40,5 @@ background-position: center right;
     </tr>  
 </table>
 <br/>
+
+<%= will_paginate @fd %>
