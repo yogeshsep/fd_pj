@@ -19,7 +19,7 @@ class FdsController < ApplicationController
   end
 
   def index
-    @fd = Fd.order('created_at DESC').paginate(:page => params[:page], :per_page => 2)
+    @fd = Fd.order('created_at DESC').paginate(:page => params[:page], :per_page => 8)
   end
 
   def update
