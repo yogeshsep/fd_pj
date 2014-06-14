@@ -6,10 +6,6 @@ before_save :set_openedon
     self.openedon = Date.today.strftime("%d/%m/%Y")
   end  
 
-before_save :set_noy
-  def set_noy    
-    self.noy = self.noy * 12    
-  end
 
 before_save :calculate_md
   def calculate_md
@@ -31,6 +27,10 @@ before_save :calculate_md
 before_save :calculate_age
   def calculate_age
     self.age = ((DateTime.now - self.dob)/365)
+  end
+
+before_save :calculate_roi
+  def calculate_roi
      if self.age >= 58 && self.age < 75 && self.noy == 12
        self.roi += 0.5
      elsif self.age >= 58 && self.age < 75 && self.noy == 24
@@ -50,11 +50,11 @@ before_save :calculate_age
      elsif self.age >= 75 && self.noy == 48
        self.roi += 0.75
      elsif self.age >= 75 && self.noy == 60
-       self.roi += 0.25
+       self.roi += 0.25     
      else
-       self.roi == self.roi
+       self.roi
      end
-   end
+  end
 
 before_save :calculate_interest
   def calculate_interest
