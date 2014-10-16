@@ -42,26 +42,26 @@ document.getElementById("fd_roi").value="11.5%"
 <% end %>
 </ul>
 <% end %>
-    <%= f.label :customer_name %>
-    <%= f.text_field :cusna, :placeholder =>'Name' %>
+    <h5><%= f.label :customer_name, class:'required' %>
+    <%= f.text_field :customername, :placeholder =>'Customer Name' %></h5>
 
-    <%= f.label :date_of_birth %>
-    <%= f.date_select :dob, { :include_blank => true, :start_year => 1900, :end_year => 2014 } %>
+    <h5><%= f.label :date_of_birth, class:'required' %>
+    <%= f.date_select :dateofbirth, { :include_blank => true, :start_year => 1900, :end_year => 2014 } %></h5>
    
-    <%= f.label :sex %>
-    <%= f.select :sex, options_for_select(%w[Male Female]), { :include_blank => true} %>
+    <h5><%= f.label :sex %>
+    <%= f.select :sex, options_for_select(%w[Male Female]), { :include_blank => true} %></h5>
 
-    <%= f.label :city %>
-    <%= f.text_field :city, :placeholder =>'City' %>   
+    <h5><%= f.label :city %>
+    <%= f.text_field :city, :placeholder =>'City' %></h5>   
 
-    <%= f.label :deposit_amount %>
-    <%= f.text_field :depamt, :placeholder =>'0.00' %>
+    <h5><%= f.label :deposit_amount, class:'required' %>
+    <%= f.text_field :depositamount, :placeholder =>'0.00' %></h5>
    
-    <%= f.label :opened_on %>
-    <%= f.text_field :openedon, :disabled => true, :value => Date.today.strftime("%d/%m/%Y") %>
+    <h5><%= f.label :opened_on %>
+    <%= f.text_field :openedon, :disabled => true, :value => Date.today.strftime("%d/%m/%Y") %></h5>
 
     <div>
-    <%= f.label :Periods %>
+    <h5><%= f.label :Periods, class:'required' %>
     <select  name="fd[noy]" id="fd_noy" onChange="addit()">
     <option value="">Select Periods</option>
     <option value="12Months">12Months</option>
@@ -69,16 +69,16 @@ document.getElementById("fd_roi").value="11.5%"
     <option value="36Months">36Months</option>
     <option value="48Months">48Months</option>
     <option value="60Months">60Months</option>
-    </select>
+    </select><h5>
   </div>
   <div>
-    <%= f.label :Rate_Of_Interest %>
+    <h5><%= f.label :Rate_Of_Interest %>
     <input type="text" name="fd[roi]" id="fd_roi" value="" readonly="readonly" onChange="addit()">
-    <span class="help-block">auto-generated</span>
+    <span class="help-block">auto-generated</span></h5>
   </div>
       
   </div>
-    <%= f.submit "Open FD", class: "btn btn-primary" %>     
+    <%= f.submit "Open FD", class: "btn btn-primary", data: {disable_with: "Opening..."} %>
     <% end %>
   </div>
 </div>

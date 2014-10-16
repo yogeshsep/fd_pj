@@ -11,7 +11,7 @@ background-size: 100%;
 <h1><%= link_to "Fixed Deposit", fds_path %></h1>
 <br />
 <div class="hero-unit">
-<h5><strong>Customer Name</strong> : <%= @fd.cusna %></h5>
+<h5><strong>Customer Name</strong> : <%= @fd.customername %></h5>
 <h5><strong>Age</strong> : <%= @fd.age %></h5>
 
 <div class = "span6 offset6">
@@ -38,7 +38,7 @@ background-size: 100%;
    <div class="span3">
    <strong>Deposit Amount</strong>
    </div>
-   <div class="span3"> : <%= @fd.depamt %></div>
+   <div class="span3"> : <%= @fd.depositamount %></div>
    </div>
 
    <div class="row">

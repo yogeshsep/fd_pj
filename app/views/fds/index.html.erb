@@ -29,8 +29,8 @@ background-size: 100%;
   <% @fd.each do |f| %>
     <tr>                
       <td><%= f.openedon.strftime("%d/%m/%Y")%></td>
-      <td><%= link_to f.cusna, fd_path(f) %></td>  
-      <td><%= f.depamt %></td>
+      <td><%= link_to f.customername, fd_path(f) %></td>  
+      <td><%= f.depositamount %></td>
       <td><%= f.age %></td>
       <td><%= f.roi %>%</td>
       <td><%= f.noy %></td>

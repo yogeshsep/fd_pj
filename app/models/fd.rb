@@ -1,5 +1,5 @@
 class Fd < ActiveRecord::Base
-  attr_accessible :addr, :city, :cusna, :depamt, :dob, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :interest
+  attr_accessible :addr, :city, :customername, :depositamount, :dateofbirth, :noy, :openedon, :pan, :pin, :roi, :sex, :md, :interest
   
 before_save :set_openedon    
   def set_openedon
@@ -26,7 +26,7 @@ before_save :calculate_md
 
 before_save :calculate_age
   def calculate_age
-    self.age = ((DateTime.now - self.dob)/365)
+    self.age = ((DateTime.now - self.dateofbirth)/365)
   end
 
 before_save :calculate_roi
@@ -59,7 +59,7 @@ before_save :calculate_roi
 before_save :calculate_interest
   def calculate_interest
     self.roi = self.roi/100
-    self.interest = ((self.depamt.round * self.roi)/12).round
+    self.interest = ((self.depositamount.round * self.roi)/12).round
   end
 
 before_save :set_roi
@@ -67,7 +67,7 @@ before_save :set_roi
     self.roi = self.roi * 100
   end
   
-  validates :cusna, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
+  validates :customername, presence: true, format: { with: %r{^[A-Z][a-zA-Z\s]*} }
 
   #validates_numericality_of :pin, presence: true, length: { maximum: 6 }  
 
@@ -77,7 +77,7 @@ before_save :set_roi
 
   #validates :pan, :uniqueness => true, presence:true, format: { with: %r{^[A-Z]{5}\d{4}[A-Z]{1}} }, length: {maximum: 10}
 
-  validates_inclusion_of :dob,
+  validates_inclusion_of :dateofbirth,
       :in => Date.civil(1900, 1, 1)..Date.today,
       :message => "Must be between 1900 and now"   
 
@@ -87,5 +87,5 @@ before_save :set_roi
 
   validates :sex, presence: true    
 
-  validates :depamt, presence: true
+  validates :depositamount, presence: true
 end

@@ -4,6 +4,7 @@ class FdsController < ApplicationController
   end
 
   def create
+    sleep 2
     @fd = Fd.new(params[:fd])
     if @fd.save
       flash[:success] = "FD Account Opened Successfully!"
@@ -24,7 +25,6 @@ class FdsController < ApplicationController
 
   def update
     @fd = Fd.find(params[:id])
-
       if @fd.update_attributes(params[:fd])
         flash[:success] = "Updated your FD Account"
         redirect_to fds_path(@fd)
